@@ -128,3 +128,45 @@ window.onload = () => {
             }
         });
 };
+
+// Function to fetch trending movies
+function fetchTrendingMovies() {
+    const url = `https://www.omdbapi.com/?apikey=8f810cc0&s=action`; // Example query for trending movies
+
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.Response === "True") {
+                displayTrendingMovies(data.Search);
+            } else {
+                console.error("No trending movies found.");
+            }
+        })
+        .catch((error) => {
+            console.error("Error fetching trending movies:", error);
+        });
+}
+
+// Function to display trending movies
+function displayTrendingMovies(movies) {
+    const trendingMoviesContainer = document.getElementById("trending-movies");
+    trendingMoviesContainer.innerHTML = ""; // Clear previous results
+
+    movies.forEach((movie) => {
+        const movieCard = document.createElement("div");
+        movieCard.classList.add("movie-card");
+
+        movieCard.innerHTML = `
+            <img src="${movie.Poster}" alt="${movie.Title}" />
+            <h3>${movie.Title}</h3>
+            <p>${movie.Year}</p>
+        `;
+
+        trendingMoviesContainer.appendChild(movieCard);
+    });
+}
+
+// Load trending movies on page load
+window.onload = () => {
+    fetchTrendingMovies();
+};

@@ -231,3 +231,11 @@ footer {
 .plan button:hover {
     background-color: #ff0a16;
 }
+
+/* Trending Movies Section */
+#trending-movies {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
