@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MovieHub</title>
+    <title>TV Shows - MovieHub</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,8 +19,8 @@
                 <li><a href="watchlist.html">Watchlist</a></li>
             </ul>
             <div class="search-box">
-                <input type="text" id="input" placeholder="Search movies..." />
-                <button onclick="search()">Search</button>
+                <input type="text" id="input" placeholder="Search TV shows..." />
+                <button onclick="searchTVShows()">Search</button>
             </div>
         </nav>
     </header>
@@ -28,15 +28,15 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h1>Welcome to MovieHub</h1>
-                <p>Stream your favorite movies and TV shows anytime, anywhere.</p>
+                <h1>TV Shows</h1>
+                <p>Explore the latest and greatest TV shows.</p>
             </div>
         </section>
 
         <section class="movie-list">
-            <h2>Popular Movies</h2>
-            <div class="movies" id="movies">
-                <!-- Movie cards will be dynamically inserted here -->
+            <h2>Popular TV Shows</h2>
+            <div class="movies" id="tv-shows">
+                <!-- TV show cards will be dynamically inserted here -->
             </div>
         </section>
     </main>
@@ -45,6 +45,6 @@
         <p>&copy; 2025 MovieHub. All rights reserved.</p>
     </footer>
 
-    <script src="index.js"></script>
+    <script src="tv-shows.js"></script>
 </body>
 </html>
