@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MovieHub</title>
+    <title>My Watchlist</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,33 +18,22 @@
                 <li><a href="#">Subscriptions</a></li>
                 <li><a href="watchlist.html">Watchlist</a></li>
             </ul>
-            <div class="search-box">
-                <input type="text" id="input" placeholder="Search movies..." />
-                <button onclick="search()">Search</button>
-            </div>
         </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Welcome to MovieHub</h1>
-                <p>Stream your favorite movies and TV shows anytime, anywhere.</p>
-            </div>
-        </section>
-
         <section class="movie-list">
-            <h2>Popular Movies</h2>
-            <div class="movies" id="movies">
-                <!-- Movie cards will be dynamically inserted here -->
+            <h2>My Watchlist</h2>
+            <div class="movies" id="watchlist-movies">
+                <!-- Watchlist movies will be dynamically inserted here -->
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 MovieHub. All rights reserved.</p>
+        <p>&copy; 2023 MovieHub. All rights reserved.</p>
     </footer>
 
-    <script src="index.js"></script>
+    <script src="watchlist.js"></script>
 </body>
 </html>

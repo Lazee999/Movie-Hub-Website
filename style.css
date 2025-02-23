@@ -156,3 +156,27 @@ footer {
     padding: 10px;
     margin-top: 20px;
 }
+
+
+/* Add to Watchlist Button */
+.add-to-watchlist {
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.add-to-watchlist:hover {
+    background-color: #ff0a16;
+}
+
+/* Watchlist Page */
+#watchlist-movies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
