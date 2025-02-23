@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Movie<span>Hub</span></div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">TV Shows</a></li>
+                <li><a href="#">Movies</a></li>
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Subscriptions</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" id="input" placeholder="Search movies..." />
+                <button onclick="search()">Search</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to MovieHub</h1>
+                <p>Stream your favorite movies and TV shows anytime, anywhere.</p>
+            </div>
+        </section>
+
+        <section class="movie-list">
+            <h2>Popular Movies</h2>
+            <div class="movies" id="movies">
+                <!-- Movie cards will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <section class="movie-details" id="movie-details">
+            <!-- Movie details will be dynamically inserted here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MovieHub. All rights reserved.</p>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
