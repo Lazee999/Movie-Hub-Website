@@ -171,6 +171,49 @@ window.onload = () => {
     fetchTrendingMovies();
 };
 
+// Function to fetch popular movies
+function fetchPopularMovies() {
+    const url = `https://www.omdbapi.com/?apikey=8f810cc0&s=popular`; // Example query for popular movies
+
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.Response === "True") {
+                displayPopularMovies(data.Search);
+            } else {
+                console.error("No popular movies found.");
+            }
+        })
+        .catch((error) => {
+            console.error("Error fetching popular movies:", error);
+        });
+}
+
+// Function to display popular movies
+function displayPopularMovies(movies) {
+    const moviesContainer = document.getElementById("movies");
+    moviesContainer.innerHTML = ""; // Clear previous results
+
+    movies.forEach((movie) => {
+        const movieCard = document.createElement("div");
+        movieCard.classList.add("movie-card");
+
+        movieCard.innerHTML = `
+            <img src="${movie.Poster}" alt="${movie.Title}" />
+            <h3>${movie.Title}</h3>
+            <p>${movie.Year}</p>
+            <button class="add-to-watchlist" onclick="addToWatchlist(${JSON.stringify(movie).replace(/"/g, '&quot;')})">Add to Watchlist</button>
+        `;
+
+        moviesContainer.appendChild(movieCard);
+    });
+}
+
+// Load popular movies on page load
+window.onload = () => {
+    fetchPopularMovies();
+};
+
 // Function to display movie details
 function displayMovieDetails(movie) {
     const movieDetails = document.getElementById("movie-details");
