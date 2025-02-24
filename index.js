@@ -170,3 +170,30 @@ function displayTrendingMovies(movies) {
 window.onload = () => {
     fetchTrendingMovies();
 };
+
+// Function to display movie details
+function displayMovieDetails(movie) {
+    const movieDetails = document.getElementById("movie-details");
+    movieDetails.innerHTML = `
+        <img src="${movie.Poster}" alt="${movie.Title}" />
+        <h2>${movie.Title}</h2>
+        <p>Year: ${movie.Year}</p>
+        <p>Rating: ${movie.imdbRating}</p>
+        <p>Plot: ${movie.Plot}</p>
+    `;
+
+    // Add social sharing buttons
+    const shareUrl = encodeURIComponent(window.location.href); // URL of the current page
+    const shareText = encodeURIComponent(`Check out this movie: ${movie.Title}`);
+
+    // Facebook Share URL
+    document.getElementById("share-facebook").href = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+
+    // Twitter Share URL
+    document.getElementById("share-twitter").href = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
+
+    // WhatsApp Share URL
+    document.getElementById("share-whatsapp").href = `https://wa.me/?text=${shareText}%20${shareUrl}`;
+
+    movieDetails.classList.add("active");
+}
