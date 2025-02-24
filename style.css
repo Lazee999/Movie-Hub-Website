@@ -7,6 +7,7 @@ body {
     color: #fff;
 }
 
+/* Header and Navigation */
 header {
     background-color: #000;
     padding: 10px 20px;
@@ -67,6 +68,7 @@ button:hover {
     background-color: #ff0a16;
 }
 
+/* Hero Section */
 .hero {
     background: url('hero-bg.jpg') no-repeat center center/cover;
     height: 400px;
@@ -85,6 +87,7 @@ button:hover {
     font-size: 1.2rem;
 }
 
+/* Movie List and Cards */
 .movie-list {
     padding: 20px;
 }
@@ -107,6 +110,12 @@ button:hover {
     width: 200px;
     text-align: center;
     cursor: pointer;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
 }
 
 .movie-card img {
@@ -125,6 +134,7 @@ button:hover {
     color: #aaa;
 }
 
+/* Movie Details */
 .movie-details {
     padding: 20px;
     display: none;
@@ -148,30 +158,6 @@ button:hover {
 .movie-details p {
     font-size: 1.1rem;
     margin: 5px 0;
-}
-
-footer {
-    background-color: #000;
-    text-align: center;
-    padding: 10px;
-    margin-top: 20px;
-}
-
-
-/* Add to Watchlist Button */
-.add-to-watchlist {
-    background-color: #e50914;
-    color: #fff;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    font-size: 0.9rem;
-}
-
-.add-to-watchlist:hover {
-    background-color: #ff0a16;
 }
 
 /* Watchlist Page */
@@ -278,31 +264,12 @@ footer {
     opacity: 0.9;
 }
 
-/* Movie Cards */
-.movie-card {
-    background-color: #333;
-    border-radius: 10px;
-    overflow: hidden;
-    width: 200px;
+/* Footer */
+footer {
+    background-color: #000;
     text-align: center;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-.movie-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
-
-.movie-card h3 {
-    font-size: 1.2rem;
-    margin: 10px 0;
-}
-
-.movie-card p {
-    font-size: 0.9rem;
-    color: #aaa;
+    padding: 10px;
+    margin-top: 20px;
 }
 
 /* Add to Watchlist Button */
