@@ -1,3 +1,4 @@
+// Function to search movies
 function search() {
     const inputPanel = document.getElementById("input");
     const movieName = inputPanel.value.trim();
@@ -24,16 +25,22 @@ function search() {
         });
 }
 
+// Function to display movies
 function displayMovies(movies, containerId) {
     const moviesContainer = document.getElementById(containerId);
-    moviesContainer.innerHTML = "";
+    moviesContainer.innerHTML = ""; // Clear previous results
+
+    if (!movies || movies.length === 0) {
+        moviesContainer.innerHTML = "<p>No movies found. Try another search!</p>";
+        return;
+    }
 
     movies.forEach((movie) => {
         const movieCard = document.createElement("div");
         movieCard.classList.add("movie-card");
 
         movieCard.innerHTML = `
-            <img src="${movie.Poster}" alt="${movie.Title}" />
+            <img src="${movie.Poster}" alt="${movie.Title}" onerror="this.src='placeholder.jpg';" />
             <h3>${movie.Title}</h3>
             <p>${movie.Year}</p>
             <button class="add-to-watchlist" onclick="addToWatchlist(${JSON.stringify(movie).replace(/"/g, '&quot;')})">Add to Watchlist</button>
@@ -44,6 +51,7 @@ function displayMovies(movies, containerId) {
     });
 }
 
+// Function to load movie details
 function loadMovieDetails(imdbID) {
     const url = `https://www.omdbapi.com/?apikey=8f810cc0&i=${imdbID}`;
 
@@ -59,6 +67,7 @@ function loadMovieDetails(imdbID) {
         });
 }
 
+// Function to display movie details
 function displayMovieDetails(movie) {
     const movieDetails = document.getElementById("movie-details");
     movieDetails.innerHTML = `
@@ -80,6 +89,7 @@ function displayMovieDetails(movie) {
     movieDetails.classList.add("active");
 }
 
+// Function to add a movie to the watchlist
 function addToWatchlist(movie) {
     let watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
     if (!watchlist.some((m) => m.imdbID === movie.imdbID)) {
@@ -91,8 +101,45 @@ function addToWatchlist(movie) {
     }
 }
 
+// Voice Search Functionality
+function initializeVoiceSearch() {
+    // Check if the browser supports the Web Speech API
+    if (!('webkitSpeechRecognition' in window)) {
+        alert("Your browser does not support voice search. Please use Chrome or another supported browser.");
+        return;
+    }
+
+    // Initialize the speech recognition object
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = false; // Stop after one command
+    recognition.interimResults = false; // Only final results
+    recognition.lang = "en-US"; // Set language
+
+    // Get the search input and voice search button
+    const searchInput = document.getElementById("input");
+    const voiceSearchButton = document.getElementById("voice-search-button");
+
+    // Add click event listener to the voice search button
+    voiceSearchButton.addEventListener("click", () => {
+        recognition.start(); // Start voice recognition
+    });
+
+    // Handle the result event
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript; // Get the spoken text
+        searchInput.value = transcript; // Set the search input value
+        search(); // Trigger the search function
+    };
+
+    // Handle errors
+    recognition.onerror = (event) => {
+        console.error("Voice search error:", event.error);
+        alert("An error occurred during voice search. Please try again.");
+    };
+}
+
 // Initialize the app
-window.onload = function() {
+window.onload = function () {
     // Load popular movies
     fetch(`https://www.omdbapi.com/?apikey=8f810cc0&s=action`)
         .then((response) => response.json())
@@ -110,4 +157,7 @@ window.onload = function() {
                 displayMovies(data.Search, "trending-movies");
             }
         });
+
+    // Initialize voice search
+    initializeVoiceSearch();
 };
