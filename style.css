@@ -287,3 +287,15 @@ footer {
 .add-to-watchlist:hover {
     background-color: #ff0a16;
 }
+
+#voice-search-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#voice-search-button img {
+    width: 20px;
+    height: 20px;
+}
